@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivityUser">
+
+    <Button
+        android:id="@+id/houseDetails"
+        android:layout_width="260dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="100dp"
+        android:text="@string/house_details"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/weatherDetails"
+        android:layout_width="260dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="30dp"
+        android:text="@string/weather_details"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        app:layout_constraintEnd_toEndOf="@+id/houseDetails"
+        app:layout_constraintStart_toStartOf="@+id/houseDetails"
+        app:layout_constraintTop_toBottomOf="@+id/houseDetails" />
+
+    <Button
+        android:id="@+id/videoFeed"
+        android:layout_width="260dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="30dp"
+        android:text="@string/video_feed"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        app:layout_constraintEnd_toEndOf="@+id/weatherDetails"
+        app:layout_constraintStart_toStartOf="@+id/weatherDetails"
+        app:layout_constraintTop_toBottomOf="@+id/weatherDetails" />
+
+    <Button
+        android:id="@+id/energyBreakDown"
+        android:layout_width="260dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="30dp"
+        android:text="@string/energy_breakdown"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        app:layout_constraintEnd_toEndOf="@+id/appliances"
+        app:layout_constraintStart_toStartOf="@+id/appliances"
+        app:layout_constraintTop_toBottomOf="@+id/appliances" />
+
+    <Button
+        android:id="@+id/mySettings"
+        android:layout_width="260dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="30dp"
+        android:text="@string/my_settings"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        app:layout_constraintEnd_toEndOf="@+id/energyBreakDown"
+        app:layout_constraintStart_toStartOf="@+id/energyBreakDown"
+        app:layout_constraintTop_toBottomOf="@+id/energyBreakDown" />
+
+    <Button
+        android:id="@+id/appliances"
+        android:layout_width="260dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="30dp"
+        android:text="@string/appliances"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        app:layout_constraintEnd_toEndOf="@+id/videoFeed"
+        app:layout_constraintStart_toStartOf="@+id/videoFeed"
+        app:layout_constraintTop_toBottomOf="@+id/videoFeed" />
+</androidx.constraintlayout.widget.ConstraintLayout>

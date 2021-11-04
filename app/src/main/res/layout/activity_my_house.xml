@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MyHouseActivity">
+
+    <TextView
+        android:id="@+id/securityStatus"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="90dp"
+        android:layout_marginLeft="90dp"
+        android:layout_marginTop="80dp"
+        android:text="@string/security_status"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/statusLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="50dp"
+        android:layout_marginLeft="50dp"
+        app:layout_constraintStart_toEndOf="@+id/securityStatus"
+        app:layout_constraintTop_toTopOf="@+id/securityStatus" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/viewGarage"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        app:layout_constraintEnd_toEndOf="@+id/statusLabel"
+        app:layout_constraintHorizontal_bias="0.523"
+        app:layout_constraintStart_toStartOf="@+id/securityStatus"
+        app:layout_constraintTop_toBottomOf="@+id/grgLockStatus" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/viewFloors"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        app:layout_constraintEnd_toEndOf="@+id/viewGarage"
+        app:layout_constraintStart_toStartOf="@+id/viewGarage"
+        app:layout_constraintTop_toBottomOf="@+id/viewGarage" />
+
+    <TextView
+        android:id="@+id/frntDoorLock"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="@string/frontdoorlock"
+        app:layout_constraintStart_toStartOf="@+id/securityStatus"
+        app:layout_constraintTop_toBottomOf="@+id/seekStatus" />
+
+    <TextView
+        android:id="@+id/frntLockLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="@+id/statusLabel"
+        app:layout_constraintTop_toTopOf="@+id/frntDoorLock" />
+
+    <TextView
+        android:id="@+id/bckDoorStatus"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="@string/backdoorlock"
+        app:layout_constraintStart_toStartOf="@+id/frntDoorLock"
+        app:layout_constraintTop_toBottomOf="@+id/frntDoorLock" />
+
+    <TextView
+        android:id="@+id/bckLockLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="@+id/frntLockLabel"
+        app:layout_constraintTop_toTopOf="@+id/bckDoorStatus" />
+
+    <TextView
+        android:id="@+id/grgLockStatus"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="@string/garagedoorlock"
+        app:layout_constraintStart_toStartOf="@+id/bckDoorStatus"
+        app:layout_constraintTop_toBottomOf="@+id/bckDoorStatus" />
+
+    <TextView
+        android:id="@+id/grgLockLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="@+id/bckLockLabel"
+        app:layout_constraintTop_toTopOf="@+id/grgLockStatus" />
+
+    <SeekBar
+        android:id="@+id/seekStatus"
+        android:layout_width="75dp"
+        android:layout_height="wrap_content"
+        android:max="2"
+        android:progress="2"
+        app:layout_constraintStart_toStartOf="@+id/statusLabel"
+        app:layout_constraintTop_toBottomOf="@+id/statusLabel" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

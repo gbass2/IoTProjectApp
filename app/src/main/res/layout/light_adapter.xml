@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <TextView
+        android:id="@+id/lightNo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="20dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Switch
+        android:id="@+id/lightSwitch"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="50dp"
+        android:layout_marginLeft="50dp"
+        app:layout_constraintStart_toEndOf="@+id/lightNo"
+        app:layout_constraintTop_toTopOf="@+id/lightNo" />
+
+    <SeekBar
+        android:id="@+id/dimmerLvl"
+        android:layout_width="150dp"
+        android:layout_height="18dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginLeft="20dp"
+        android:max="4"
+        android:progress="2"
+        app:layout_constraintStart_toEndOf="@+id/lightSwitch"
+        app:layout_constraintTop_toTopOf="@+id/lightNo" />
+
+    <TextView
+        android:id="@+id/one"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/one"
+        app:layout_constraintStart_toStartOf="@+id/dimmerLvl"
+        app:layout_constraintTop_toBottomOf="@+id/dimmerLvl" />
+
+    <TextView
+        android:id="@+id/five"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/five"
+        app:layout_constraintEnd_toEndOf="@+id/dimmerLvl"
+        app:layout_constraintTop_toBottomOf="@+id/dimmerLvl" />
+
+    <TextView
+        android:id="@+id/three"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/three"
+        app:layout_constraintEnd_toStartOf="@+id/five"
+        app:layout_constraintStart_toEndOf="@+id/one"
+        app:layout_constraintTop_toBottomOf="@+id/dimmerLvl" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

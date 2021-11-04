@@ -1,0 +1,42 @@
+<resources>
+    <string name="app_name">49erSense</string>
+    <string name="house_details">Home Settings</string>
+    <string name="weather_details">Weather</string>
+    <string name="video_feed">Video Feed</string>
+    <string name="appliances">Manage Appliances</string>
+    <string name="energy_breakdown">Energy Breakdown</string>
+    <string name="my_settings">My Settings</string>
+    <string name="security_status">Security Status</string>
+    <string name="sec_status_value">Armed</string>
+    <string name="thermostat">Control Temperature</string>
+    <string name="minusbutton">&#8211;</string>
+    <string name="plusbutton">+</string>
+    <string name="currentTemp">Current Temperature</string>
+    <string name="tmode">Mode</string>
+    <string name="tfan">Fan</string>
+    <string name="cool">Cool</string>
+    <string name="off">Off</string>
+    <string name="heat">Heat</string>
+    <string name="fan">Fan</string>
+    <string name="auto">Auto</string>
+    <string name="one">1</string>
+    <string name="five">5</string>
+    <string name="three">3</string>
+    <string name="frontdoorlock">Front Door Lock</string>
+    <string name="backdoorlock">Back Door Lock</string>
+    <string name="garagedoorlock">Garage Door Lock</string>
+    <string name="levelButton">Level</string>
+    <string name="record_video">Record Video</string>
+    <string name="status_off">OFF</string>
+    <string name="status_on">ON</string>
+    <string name="add_appliance">Add Appliance</string>
+    <string name="schedule">Schedule</string>
+
+
+    <string-array name="appliance_type">
+        <item>Dishwasher</item>
+        <item>Television</item>
+        <item>Microwave</item>
+        <item>Dryer</item>
+    </string-array>
+</resources>

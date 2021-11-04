@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/floorHeader"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/viewLights"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="50dp"
+        android:layout_marginLeft="50dp"
+        android:layout_marginTop="30dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/floorHeader" />
+
+    <TextView
+        android:id="@+id/thermostatID"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="28dp"
+        android:text="@string/thermostat"
+        app:layout_constraintStart_toStartOf="@+id/viewLights"
+        app:layout_constraintTop_toBottomOf="@+id/viewLights" />
+
+    <Button
+        android:id="@+id/minusbutton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="20dp"
+        android:text="@string/minusbutton"
+        android:textSize="14sp"
+        app:layout_constraintStart_toEndOf="@+id/currentTemp"
+        app:layout_constraintTop_toBottomOf="@+id/viewLights" />
+
+    <TextView
+        android:id="@+id/controlTempLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginLeft="10dp"
+        app:layout_constraintStart_toEndOf="@+id/minusbutton"
+        app:layout_constraintTop_toTopOf="@+id/thermostatID" />
+
+    <Button
+        android:id="@+id/plusbutton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginLeft="10dp"
+        android:text="@string/plusbutton"
+        app:layout_constraintStart_toEndOf="@+id/controlTempLabel"
+        app:layout_constraintTop_toTopOf="@+id/minusbutton" />
+
+    <TextView
+        android:id="@+id/currentTemp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:text="@string/currentTemp"
+        app:layout_constraintStart_toStartOf="@+id/thermostatID"
+        app:layout_constraintTop_toBottomOf="@+id/minusbutton" />
+
+    <TextView
+        android:id="@+id/currentTempLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="@+id/minusbutton"
+        app:layout_constraintTop_toTopOf="@+id/currentTemp" />
+
+    <TextView
+        android:id="@+id/tmode"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:text="@string/tmode"
+        app:layout_constraintStart_toStartOf="@+id/currentTemp"
+        app:layout_constraintTop_toBottomOf="@+id/currentTemp" />
+
+    <SeekBar
+        android:id="@+id/seekBar"
+        android:layout_width="0dp"
+        android:layout_height="18dp"
+        android:indeterminate="false"
+        android:max="2"
+        android:progress="0"
+        app:layout_constraintEnd_toEndOf="@+id/heat"
+        app:layout_constraintStart_toEndOf="@+id/currentTempLabel"
+        app:layout_constraintTop_toTopOf="@+id/tmode" />
+
+    <TextView
+        android:id="@+id/cool"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/cool"
+        app:layout_constraintStart_toStartOf="@+id/minusbutton"
+        app:layout_constraintTop_toBottomOf="@+id/seekBar" />
+
+    <TextView
+        android:id="@+id/off"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginLeft="20dp"
+        android:text="@string/off"
+        app:layout_constraintStart_toEndOf="@+id/cool"
+        app:layout_constraintTop_toTopOf="@+id/cool" />
+
+    <TextView
+        android:id="@+id/heat"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginLeft="20dp"
+        android:text="@string/heat"
+        app:layout_constraintStart_toEndOf="@+id/off"
+        app:layout_constraintTop_toTopOf="@+id/off" />
+
+    <TextView
+        android:id="@+id/fan"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:text="@string/fan"
+        app:layout_constraintStart_toStartOf="@+id/tmode"
+        app:layout_constraintTop_toBottomOf="@+id/cool" />
+
+    <Switch
+        android:id="@+id/switchFan"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/auto"
+        app:layout_constraintStart_toStartOf="@+id/seekBar"
+        app:layout_constraintTop_toTopOf="@+id/fan" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
