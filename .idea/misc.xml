@@ -4,6 +4,7 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="app/src/main/res/layout/activity_energy_breakdown.xml" value="0.5604166666666667" />
+        <entry key="app/src/main/res/layout/activity_gallery_video_view.xml" value="0.4171875" />
         <entry key="app/src/main/res/layout/activity_login.xml" value="0.4171875" />
         <entry key="app/src/main/res/layout/activity_main_user.xml" value="0.4401041666666667" />
         <entry key="app/src/main/res/layout/activity_my_house.xml" value="0.4171875" />
@@ -11,6 +12,8 @@
         <entry key="app/src/main/res/layout/activity_my_weather.xml" value="0.4171875" />
         <entry key="app/src/main/res/layout/activity_signup.xml" value="0.46927083333333336" />
         <entry key="app/src/main/res/layout/activity_video_capture.xml" value="0.4171875" />
+        <entry key="app/src/main/res/layout/activity_video_gallery_list.xml" value="0.4171875" />
+        <entry key="app/src/main/res/layout/activity_video_view.xml" value="0.33229166666666665" />
         <entry key="app/src/main/res/layout/appliance_adapter.xml" value="0.4401041666666667" />
         <entry key="app/src/main/res/layout/floor_adapter.xml" value="0.4171875" />
         <entry key="app/src/main/res/layout/garage_adapter.xml" value="0.4171875" />

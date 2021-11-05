@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.os.StrictMode;
 import android.provider.MediaStore;
+import android.util.Log;
 import android.view.View;
 import android.webkit.WebView;
 import android.widget.Button;
@@ -24,7 +25,7 @@ public class VideoCaptureActivity extends AppCompatActivity {
     WebView webView;
     Button startVideoCapture;
     Button videoGallery;
-    String streamURL="http://192.168.137.32:8081";
+    String streamURL="http://192.168.2.6:8000";
 
 
 
