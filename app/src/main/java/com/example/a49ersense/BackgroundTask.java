@@ -49,7 +49,7 @@ public class BackgroundTask extends AsyncTask<String,Void,String> {
         String urlUpdate="http://192.168.2.10/49ersense/update_my_settings.php";
         String urlRegisterAdmin="http://192.168.2.10/49ersense/admin/register.php";
         String urlLoginAdmin="http://192.168.2.10/49ersense/admin/login.php";
-        String urlAdminUserDetails="http://192.168.2.10/49ersense/userdetails.php";
+        String urlAdminUserDetails="http://192.168.2.10/49ersense/admin/user_details.php";
         String urlAdminEnerngyBreakdown="http://192.168.2.10/49ersense/energyBreakdown.php";
         String task=params[0];
         Log.d(TAG,params[0]);
@@ -115,7 +115,9 @@ public class BackgroundTask extends AsyncTask<String,Void,String> {
                 String dataresponse ="";
                 StringBuilder result=new StringBuilder();
                 String inputLine;
+
                 while((inputLine=bufferedReader.readLine())!=null){
+                    Log.d("adminuserdetails", inputLine);
                     dataresponse+=inputLine;
 
                 }
@@ -370,9 +372,8 @@ public class BackgroundTask extends AsyncTask<String,Void,String> {
             String[] serverResponse = s.split("[,]");
             arraylist=  new ArrayList<>();
             arraylist= Arrays.asList(serverResponse);
-            AdminUserDetails admin = new AdminUserDetails();
-            admin.getArrayList(arraylist);
-            Log.d(TAG,arraylist.toString());
+//            AdminUserDetails admin = new AdminUserDetails();
+//            admin.getArrayList(arraylist);
         }
         if(flag.equals("update")){
             Toast.makeText(context,"Updated Successfully Login again to view new data",Toast.LENGTH_LONG).show();
@@ -410,7 +411,8 @@ public class BackgroundTask extends AsyncTask<String,Void,String> {
                 emailid = serverResponse[4];
                 phone = serverResponse[5];
                 address = serverResponse[6];
-//                houseID = serverResponse[7];
+                houseID = serverResponse[7];
+                Log.d(TAG, "houseid: " + houseID);
                 editor.putString("username", username);
                 editor.commit();
                 editor.putString("password", password);
@@ -421,7 +423,7 @@ public class BackgroundTask extends AsyncTask<String,Void,String> {
                 editor.commit();
                 editor.putString("address", address);
                 editor.commit();
-//                editor.putString("houseID", houseID);
+                editor.putString("houseID", houseID);
                 editor.commit();
                 Intent intent = new Intent(context, MainActivityUser.class);
                 context.startActivity(intent);

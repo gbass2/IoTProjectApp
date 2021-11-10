@@ -32,6 +32,7 @@ public class MainActivityUser extends AppCompatActivity
 
         String userID = preferences.getString("username","");
         String houseID = preferences.getString("houseID","");
+        Log.d("here", "houseIDhouse: " + houseID);
         house.setHouseID(houseID);
         house.setUserID(userID);
         setContentView(R.layout.activity_main_user);

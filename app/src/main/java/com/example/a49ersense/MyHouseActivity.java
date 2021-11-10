@@ -69,10 +69,10 @@ public class MyHouseActivity extends AppCompatActivity implements FloorAdapter.l
 
         for(int j=0; j<Integer.parseInt(house.getFloors());j++){
             FloorDTO floor = new FloorDTO();
-            floor.setFloorID(serverResponse[index]);
-            floor.setFloorNO("Floor "+serverResponse[index+1]);
+            floor.setFloorID(serverResponse[j]);
+            floor.setFloorNO("Floor "+serverResponse[j]);
             fs.add(floor);
-            index =index +2;
+//            index =index +2;
         }
 
         house.setGarageDTO(gs);
@@ -120,7 +120,6 @@ public class MyHouseActivity extends AppCompatActivity implements FloorAdapter.l
         view_floors.setLayoutManager(new LinearLayoutManager(MyHouseActivity.this));
 
         //fetch data from database
-
         //adapter here
         garageAdapter = new GarageAdapter(MyHouseActivity.this,gs,this);
         view_garage.setAdapter(garageAdapter);

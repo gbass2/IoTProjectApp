@@ -42,10 +42,10 @@ public class UserHouseDetailsProcessing extends AsyncTask<String,Void,String> {
         editor = preferences.edit();
         editor.putString("flag","0");
         editor.commit();
-        String houseDetails="http://192.168.43.21/49ersense/housedetails.php";
-        String updateGarage="http://192.168.43.21/49ersense/updategarage.php";
-        String updateHouseStatus="http://192.168.43.21/49ersense/updateHouseDetails.php";
-        String applianceDetails="http://192.168.43.21/49ersense/appliancedetails.php";
+        String houseDetails="http://192.168.2.10/49ersense/home/housedetails.php";
+        String updateGarage="http://192.168.2.10/49ersense/home/updategarage.php";
+        String updateHouseStatus="http://192.168.2.10/49ersense/home/updatehousedetails.php";
+        String applianceDetails="http://192.168.2.10/49ersense/home/appliancedetails.php";
 
         try{
 
@@ -227,6 +227,7 @@ public class UserHouseDetailsProcessing extends AsyncTask<String,Void,String> {
             }
         }
         if(tsk.equalsIgnoreCase("updateHouse")){
+            Log.d("updateHouse", "return: " + serverResponse[0]);
             if(serverResponse[0]=="0"){
                 Log.d("update status failed",serverResponse[0]);
             }
