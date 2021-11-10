@@ -33,8 +33,9 @@ public class UserHouseDetailsProcessing extends AsyncTask<String,Void,String> {
     @Override
     protected String doInBackground(String... strings) {
         String task=strings[0];
-        String userID=strings[1];  //garageID
-        String houseID=strings[2]; //garageStatus
+        String userID=strings[1];
+        String houseID=strings[2];
+        String garageID=strings[3];
 
         tsk=task;
 
@@ -42,10 +43,10 @@ public class UserHouseDetailsProcessing extends AsyncTask<String,Void,String> {
         editor = preferences.edit();
         editor.putString("flag","0");
         editor.commit();
-        String houseDetails="http://192.168.43.21/49ersense/housedetails.php";
-        String updateGarage="http://192.168.43.21/49ersense/updategarage.php";
-        String updateHouseStatus="http://192.168.43.21/49ersense/updateHouseDetails.php";
-        String applianceDetails="http://192.168.43.21/49ersense/appliancedetails.php";
+        String houseDetails="http://192.168.2.10/49ersense/home/housedetails.php";
+        String updateGarage="http://192.168.2.10/49ersense/home/updategarage.php";
+        String updateHouseStatus="http://192.168.2.10/49ersense/home/updatehousedetails.php";
+        String applianceDetails="http://192.168.2.10/49ersense/home/appliancedetails.php";
 
         try{
 
@@ -84,6 +85,9 @@ public class UserHouseDetailsProcessing extends AsyncTask<String,Void,String> {
                 return (dataresponse);
             }
             if(task.equalsIgnoreCase("updateGarage")){
+                Log.d("garageStatus", "garageStatus: " + userID);
+                Log.d("garageID", "garageID: " + garageID);
+                Log.d("houseID", "ID: " + houseID);
                 URL url= new URL(updateGarage);
                 HttpURLConnection httpURLConnection =(HttpURLConnection) url.openConnection();
                 httpURLConnection.setRequestMethod("POST");
@@ -92,8 +96,9 @@ public class UserHouseDetailsProcessing extends AsyncTask<String,Void,String> {
                 OutputStream outputStream= httpURLConnection.getOutputStream() ;
                 OutputStreamWriter outputStreamWriter= new OutputStreamWriter(outputStream, "UTF-8");
                 BufferedWriter bufferedWriter = new BufferedWriter(outputStreamWriter);
-                String myData= URLEncoder.encode("garageID","UTF-8")+"="+URLEncoder.encode(userID,"UTF-8")+"&"
-                        +URLEncoder.encode("garageStatus","UTF-8")+"="+URLEncoder.encode(houseID,"UTF-8");
+                String myData= URLEncoder.encode("houseID","UTF-8")+"="+URLEncoder.encode(houseID,"UTF-8")+"&"
+                        +URLEncoder.encode("garageStatus","UTF-8")+"="+URLEncoder.encode(userID,"UTF-8")+"&"
+                        +URLEncoder.encode("garageID","UTF-8")+"="+URLEncoder.encode(garageID,"UTF-8");
                 bufferedWriter.write(myData);
                 bufferedWriter.flush();
                 bufferedWriter.close();
@@ -222,11 +227,13 @@ public class UserHouseDetailsProcessing extends AsyncTask<String,Void,String> {
             }
         }
         if(tsk.equalsIgnoreCase("updateGarage")){
+            Log.d("garage responce", serverResponse[0]);
             if(serverResponse[0]=="0"){
                 Log.d("update garage failed",serverResponse[0]);
             }
         }
         if(tsk.equalsIgnoreCase("updateHouse")){
+            Log.d("updateHouse", "return: " + serverResponse[0]);
             if(serverResponse[0]=="0"){
                 Log.d("update status failed",serverResponse[0]);
             }

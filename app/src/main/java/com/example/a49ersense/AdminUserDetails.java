@@ -10,6 +10,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
+import android.content.Intent;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -30,38 +31,22 @@ public class AdminUserDetails extends AppCompatActivity {
         }
 
         listView=findViewById(R.id.list_item2);
-        String task= "adminuserdetails";
-        BackgroundTask backgroundTask= new BackgroundTask(this);
-
-        backgroundTask.execute(task);
-        ArrayList<String> userlist1= new ArrayList<>();
-        ArrayAdapter<String> arrayAdapter =  new ArrayAdapter<String>(AdminUserDetails.this,android.R.layout.simple_list_item_1,userlist1);
+        Intent intent = getIntent();
+        userlist = intent.getStringArrayListExtra("userlist");
+        Log.d(TAG,userlist.toString());
+        ArrayAdapter<String> arrayAdapter =  new ArrayAdapter<>(AdminUserDetails.this,android.R.layout.simple_list_item_1,userlist);
         listView.setAdapter(arrayAdapter);
-        setUpButtonListeners();
-//        ArrayList<String> userlist= new ArrayList<String>(backgroundTask1.arraylist);
-//        Log.d(TAG,userlist.toString());
+//        setUpButtonListeners();
 
 
     }
 
     protected void setUpButtonListeners() {
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> array, View view, int position, long id) {
-                String username = (String)array.getItemAtPosition(position);
-                String task="adminenergybreakdown";
-                BackgroundTask backgroundTask = new BackgroundTask(AdminUserDetails.this);
-                backgroundTask.execute(task,username);
-            }
+        listView.setOnItemClickListener((array, view, position, id) -> {
+            String username = (String)array.getItemAtPosition(position);
+            String task="adminenergybreakdown";
+            BackgroundTask backgroundTask = new BackgroundTask(AdminUserDetails.this);
+            backgroundTask.execute(task,username);
         });
     }
-
-    public void getArrayList(List<String> arrayList){
-        userlist= arrayList;
-        Log.d(TAG,userlist.toString());
-//        ArrayAdapter<String> arrayAdapter =  new ArrayAdapter<String>(AdminUserDetails.this,android.R.layout.simple_list_item_1,userlist);
-//        listView.setAdapter(arrayAdapter);
-
-    }
-
 }

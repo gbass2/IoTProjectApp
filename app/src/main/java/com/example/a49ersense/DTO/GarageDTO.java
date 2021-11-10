@@ -27,6 +27,7 @@ public class GarageDTO {
     }
 
     private String garageID;
+    private String houseID;
     private String doorStatus;
     private String lockStatus;
 

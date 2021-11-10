@@ -42,11 +42,11 @@ public class FloorDetailsProcessing extends AsyncTask<String,Void,String> {
         editor = preferences.edit();
         editor.putString("flag","0");
         editor.commit();
-        String floorDetails="http://192.168.43.21/49ersense/floordetails.php";
-        String updateThermoControl="http://192.168.43.21/49ersense/updateControlTemp.php";
-        String updateFan="http://192.168.43.21/49ersense/updateFan.php";
-        String updateMode="http://192.168.43.21/49ersense/updateMode.php";
-        String updateLight="http://192.168.43.21/49ersense/updateLight.php";
+        String floorDetails="http://192.168.2.10/49ersense/home/floordetails.php";
+        String updateThermoControl="http://192.168.2.10/49ersense/home/updateControlTemp.php";
+        String updateFan="http://192.168.2.10/49ersense/home/updateFan.php";
+        String updateMode="http://192.168.2.10/49ersense/home/updateMode.php";
+        String updateLight="http://192.168.2.10/49ersense/home/ gbasupdateLight.php";
 
         try{
             if(task.equalsIgnoreCase("getFloorDetails")){
@@ -276,10 +276,11 @@ public class FloorDetailsProcessing extends AsyncTask<String,Void,String> {
 //        }
 
         if(task.equalsIgnoreCase("getFloorDetails")){
+            Log.d("floorResponce", "" + s);
             if(serverResponse[0]!="0"){
-                Intent intent = new Intent(context, FloorDetailsActivity.class);
-                intent.putExtra("serverResponseforFloor",s);
-                context.startActivity(intent);
+//                Intent intent = new Intent(context, FloorDetailsActivity.class);
+//                intent.putExtra("serverResponseforFloor",s);
+//                context.startActivity(intent);
             }else {
                 Log.d("fetch database failed",serverResponse[0]);
             }

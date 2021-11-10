@@ -88,6 +88,5 @@ public class GarageAdapter extends RecyclerView.Adapter<GarageAdapter.ViewHolder
 
     public interface updateGarage{
         void updateG(String garageID, String garageStatus);
-
     }
 }

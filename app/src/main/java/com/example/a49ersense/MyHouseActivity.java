@@ -69,10 +69,10 @@ public class MyHouseActivity extends AppCompatActivity implements FloorAdapter.l
 
         for(int j=0; j<Integer.parseInt(house.getFloors());j++){
             FloorDTO floor = new FloorDTO();
-            floor.setFloorID(serverResponse[index]);
-            floor.setFloorNO("Floor "+serverResponse[index+1]);
+            floor.setFloorID(serverResponse[j]);
+            floor.setFloorNO("Floor "+serverResponse[j]);
             fs.add(floor);
-            index =index +2;
+//            index =index +2;
         }
 
         house.setGarageDTO(gs);
@@ -120,7 +120,6 @@ public class MyHouseActivity extends AppCompatActivity implements FloorAdapter.l
         view_floors.setLayoutManager(new LinearLayoutManager(MyHouseActivity.this));
 
         //fetch data from database
-
         //adapter here
         garageAdapter = new GarageAdapter(MyHouseActivity.this,gs,this);
         view_garage.setAdapter(garageAdapter);
@@ -144,7 +143,7 @@ public class MyHouseActivity extends AppCompatActivity implements FloorAdapter.l
                     house.setSecurityStatus("Armed Home");
                 }
                 UserHouseDetailsProcessing housedetails =  new UserHouseDetailsProcessing(MyHouseActivity.this);
-                housedetails.execute("updateHouse",house.getSecurityStatus(),house.getHouseID());
+                housedetails.execute("updateHouse",house.getSecurityStatus(),house.getHouseID(), "");
             }
 
             @Override
@@ -170,6 +169,6 @@ public class MyHouseActivity extends AppCompatActivity implements FloorAdapter.l
     public void updateG(String garageID,String garageStatus) {
 
         UserHouseDetailsProcessing housedetails = new UserHouseDetailsProcessing(MyHouseActivity.this);
-        housedetails.execute("updateGarage",garageID,garageStatus);
+        housedetails.execute("updateGarage",garageStatus,house.getHouseID(),garageID);
     }
 }

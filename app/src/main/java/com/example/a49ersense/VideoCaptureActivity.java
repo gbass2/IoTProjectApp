@@ -25,7 +25,7 @@ public class VideoCaptureActivity extends AppCompatActivity {
     WebView webView;
     Button startVideoCapture;
     Button videoGallery;
-    String streamURL="http://192.168.2.6:8000";
+    String streamURL="http://192.168.2.3:8000";
 
 
 

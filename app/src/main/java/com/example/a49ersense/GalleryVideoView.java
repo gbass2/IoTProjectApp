@@ -9,7 +9,6 @@ import android.content.Intent;
 import android.widget.VideoView;
 
 public class GalleryVideoView extends AppCompatActivity {
-//VideoView Galleryview;
 VideoView videov;
 String videoURL;
 SharedPreferences preferences;

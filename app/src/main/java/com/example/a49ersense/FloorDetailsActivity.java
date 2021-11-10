@@ -37,6 +37,7 @@ public class FloorDetailsActivity extends AppCompatActivity implements LightAdap
         String s = intent.getStringExtra("serverResponseforFloor");
         String[] serverResponse = s.split("[,]");
         final String houseid= serverResponse[0];
+        Log.d("floorDetails", s);
         floor.setFloorID(serverResponse[1]);
         floor.setFloorNO(serverResponse[2]);
         floor.settMode(serverResponse[3]);

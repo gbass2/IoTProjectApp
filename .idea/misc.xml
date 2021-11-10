@@ -3,10 +3,14 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="app/src/main/res/layout/activity_admin_user_details.xml" value="0.290625" />
         <entry key="app/src/main/res/layout/activity_energy_breakdown.xml" value="0.5604166666666667" />
+        <entry key="app/src/main/res/layout/activity_floor_details.xml" value="0.4171875" />
         <entry key="app/src/main/res/layout/activity_gallery_video_view.xml" value="0.4171875" />
+        <entry key="app/src/main/res/layout/activity_home.xml" value="0.2864583333333333" />
         <entry key="app/src/main/res/layout/activity_login.xml" value="0.4171875" />
         <entry key="app/src/main/res/layout/activity_main_user.xml" value="0.4401041666666667" />
+        <entry key="app/src/main/res/layout/activity_manage_appliances.xml" value="0.2864583333333333" />
         <entry key="app/src/main/res/layout/activity_my_house.xml" value="0.4171875" />
         <entry key="app/src/main/res/layout/activity_my_settings.xml" value="0.4171875" />
         <entry key="app/src/main/res/layout/activity_my_weather.xml" value="0.4171875" />
@@ -14,10 +18,14 @@
         <entry key="app/src/main/res/layout/activity_video_capture.xml" value="0.4171875" />
         <entry key="app/src/main/res/layout/activity_video_gallery_list.xml" value="0.4171875" />
         <entry key="app/src/main/res/layout/activity_video_view.xml" value="0.33229166666666665" />
+        <entry key="app/src/main/res/layout/adapter_admin_user.xml" value="0.290625" />
         <entry key="app/src/main/res/layout/appliance_adapter.xml" value="0.4401041666666667" />
+        <entry key="app/src/main/res/layout/custom_alert_dialog_add_appliance.xml" value="0.2864583333333333" />
         <entry key="app/src/main/res/layout/floor_adapter.xml" value="0.4171875" />
         <entry key="app/src/main/res/layout/garage_adapter.xml" value="0.4171875" />
         <entry key="app/src/main/res/layout/get_user_details_list.xml" value="0.4171875" />
+        <entry key="app/src/main/res/layout/light_adapter.xml" value="0.2864583333333333" />
+        <entry key="app/src/main/res/layout/list_item.xml" value="0.4171875" />
         <entry key="app/src/main/res/layout/row_textview.xml" value="0.4171875" />
       </map>
     </option>
