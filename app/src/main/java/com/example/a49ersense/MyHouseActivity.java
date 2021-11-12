@@ -68,11 +68,12 @@ public class MyHouseActivity extends AppCompatActivity implements FloorAdapter.l
         }
 
         for(int j=0; j<Integer.parseInt(house.getFloors());j++){
+            Log.d("floor j","index " + index);
             FloorDTO floor = new FloorDTO();
-            floor.setFloorID(serverResponse[j]);
-            floor.setFloorNO("Floor "+serverResponse[j]);
+            floor.setFloorID(serverResponse[index]);
+            floor.setFloorNO("Floor "+ serverResponse[index+1]);
             fs.add(floor);
-//            index =index +2;
+            index =index +2;
         }
 
         house.setGarageDTO(gs);
@@ -162,7 +163,7 @@ public class MyHouseActivity extends AppCompatActivity implements FloorAdapter.l
     public void loadPage(FloorDTO floor,String houseID) {
 
         FloorDetailsProcessing floorprocessing = new FloorDetailsProcessing(MyHouseActivity.this);
-        floorprocessing.execute("getFloorDetails",floor.getFloorID(),houseID,floor.getFloorNO());
+        floorprocessing.execute("getFloorDetails",floor.getFloorID(),houseID,floor.getFloorNO(),"","");
 
     }
 

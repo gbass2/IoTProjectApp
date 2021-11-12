@@ -36,6 +36,8 @@ public class FloorDetailsProcessing extends AsyncTask<String,Void,String> {
         String floorID=strings[1]; //lightid
         String floorNO=strings[3]; //controlTemp,dimmerlevel
         String houseID=strings[2]; //lightstatus
+        String houseID2=strings[4];
+        String floorID2=strings[5];
 
         task=tsk;
         preferences=context.getSharedPreferences("MYPREFS",Context.MODE_PRIVATE);
@@ -43,10 +45,10 @@ public class FloorDetailsProcessing extends AsyncTask<String,Void,String> {
         editor.putString("flag","0");
         editor.commit();
         String floorDetails="http://192.168.2.10/49ersense/home/floordetails.php";
-        String updateThermoControl="http://192.168.2.10/49ersense/home/updateControlTemp.php";
-        String updateFan="http://192.168.2.10/49ersense/home/updateFan.php";
-        String updateMode="http://192.168.2.10/49ersense/home/updateMode.php";
-        String updateLight="http://192.168.2.10/49ersense/home/ gbasupdateLight.php";
+        String updateThermoControl="http://192.168.2.10/49ersense/home/updatecontroltemp.php";
+        String updateFan="http://192.168.2.10/49ersense/home/updatefan.php";
+        String updateMode="http://192.168.2.10/49ersense/home/updatemode.php";
+        String updateLight="http://192.168.2.10/49ersense/home/updatelights.php";
 
         try{
             if(task.equalsIgnoreCase("getFloorDetails")){
@@ -166,6 +168,10 @@ public class FloorDetailsProcessing extends AsyncTask<String,Void,String> {
             }
 
             if(task.equalsIgnoreCase("updateMode")){
+                Log.d("mode: ",floorNO);
+                Log.d("houseID: ",houseID);
+                Log.d("floorID: ",floorID);
+
                 URL url= new URL(updateMode);
                 HttpURLConnection httpURLConnection =(HttpURLConnection) url.openConnection();
                 httpURLConnection.setRequestMethod("POST");
@@ -215,7 +221,9 @@ public class FloorDetailsProcessing extends AsyncTask<String,Void,String> {
                 BufferedWriter bufferedWriter = new BufferedWriter(outputStreamWriter);
                 String myData= URLEncoder.encode("dimmerLevel","UTF-8")+"="+URLEncoder.encode(floorNO,"UTF-8")+"&"
                         +URLEncoder.encode("lightID","UTF-8")+"="+URLEncoder.encode(floorID,"UTF-8")+"&"+
-                        URLEncoder.encode("lightStatus","UTF-8")+"="+URLEncoder.encode(houseID,"UTF-8");
+                        URLEncoder.encode("lightStatus","UTF-8")+"="+URLEncoder.encode(houseID,"UTF-8")+"&"+
+                        URLEncoder.encode("houseID","UTF-8")+"="+URLEncoder.encode(houseID2,"UTF-8")+"&"+
+                        URLEncoder.encode("floorID","UTF-8")+"="+URLEncoder.encode(floorID2,"UTF-8");
                 bufferedWriter.write(myData);
                 bufferedWriter.flush();
                 bufferedWriter.close();
@@ -278,9 +286,9 @@ public class FloorDetailsProcessing extends AsyncTask<String,Void,String> {
         if(task.equalsIgnoreCase("getFloorDetails")){
             Log.d("floorResponce", "" + s);
             if(serverResponse[0]!="0"){
-//                Intent intent = new Intent(context, FloorDetailsActivity.class);
-//                intent.putExtra("serverResponseforFloor",s);
-//                context.startActivity(intent);
+                Intent intent = new Intent(context, FloorDetailsActivity.class);
+                intent.putExtra("serverResponseforFloor",s);
+                context.startActivity(intent);
             }else {
                 Log.d("fetch database failed",serverResponse[0]);
             }

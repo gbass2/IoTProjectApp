@@ -218,6 +218,7 @@ public class UserHouseDetailsProcessing extends AsyncTask<String,Void,String> {
     protected void onPostExecute(String s){
         String[] serverResponse = s.split("[,]");
         if(tsk.equalsIgnoreCase("getHouseDetails")){
+            Log.d(tsk,s);
             if(serverResponse[0]!="0"){
                 Intent intent = new Intent(context, MyHouseActivity.class);
                 intent.putExtra("serverResponse",s);

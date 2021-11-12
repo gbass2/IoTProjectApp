@@ -29,14 +29,16 @@ public class FloorDetailsActivity extends AppCompatActivity implements LightAdap
     TextView controlTemp, currentTemp, floorHeader;
     FloorDTO floor = new FloorDTO();
     ArrayList<LightsDTO> ls = new ArrayList<>();
+    String houseid = "";
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_floor_details);
         Intent intent = getIntent();
         String s = intent.getStringExtra("serverResponseforFloor");
+        Log.d("floors responce",s);
         String[] serverResponse = s.split("[,]");
-        final String houseid= serverResponse[0];
+        houseid= serverResponse[0];
         Log.d("floorDetails", s);
         floor.setFloorID(serverResponse[1]);
         floor.setFloorNO(serverResponse[2]);
@@ -100,7 +102,7 @@ public class FloorDetailsActivity extends AppCompatActivity implements LightAdap
                 floor.settControl(Integer.toString(temp));
                 controlTemp.setText(floor.gettControl());
                 FloorDetailsProcessing floorprocessing = new FloorDetailsProcessing(FloorDetailsActivity.this);
-                floorprocessing.execute("updateControlTemp",floor.getFloorID(),houseid,floor.gettControl());
+                floorprocessing.execute("updateControlTemp",floor.getFloorID(),houseid,floor.gettControl(),"","");
             }
         });
 
@@ -112,7 +114,7 @@ public class FloorDetailsActivity extends AppCompatActivity implements LightAdap
                 floor.settControl(Integer.toString(temp));
                 controlTemp.setText(floor.gettControl());
                 FloorDetailsProcessing floorprocessing = new FloorDetailsProcessing(FloorDetailsActivity.this);
-                floorprocessing.execute("updateControlTemp",floor.getFloorID(),houseid,floor.gettControl());
+                floorprocessing.execute("updateControlTemp",floor.getFloorID(),houseid,floor.gettControl(),"","");
             }
         });
 
@@ -126,7 +128,7 @@ public class FloorDetailsActivity extends AppCompatActivity implements LightAdap
                     floor.settFan("Off");
                 }
                 FloorDetailsProcessing floorprocessing = new FloorDetailsProcessing(FloorDetailsActivity.this);
-                floorprocessing.execute("updateFanMode",floor.getFloorID(),houseid,floor.gettFan());
+                floorprocessing.execute("updateFanMode",floor.getFloorID(),houseid,floor.gettFan(),"","");
             }
         });
 
@@ -140,10 +142,10 @@ public class FloorDetailsActivity extends AppCompatActivity implements LightAdap
                     floor.settMode("Off");
                 }
                 if(progress==2){
-                    floor.settMode("Auto");
+                    floor.settMode("Heat");
                 }
                 FloorDetailsProcessing floorprocessing = new FloorDetailsProcessing(FloorDetailsActivity.this);
-                floorprocessing.execute("updateMode",floor.getFloorID(),houseid,floor.gettMode());
+                floorprocessing.execute("updateMode",floor.getFloorID(),houseid,floor.gettMode(),"","");
             }
 
             @Override
@@ -162,7 +164,7 @@ public class FloorDetailsActivity extends AppCompatActivity implements LightAdap
     public void updateL(String lightID,String lightStatus, String dimmerLevel) {
 
         FloorDetailsProcessing floorprocessing = new FloorDetailsProcessing(FloorDetailsActivity.this);
-        floorprocessing.execute("updateLight",lightID,lightStatus,dimmerLevel);
+        floorprocessing.execute("updateLight",lightID,lightStatus,dimmerLevel,houseid,floor.getFloorID());
     }
 
 }
