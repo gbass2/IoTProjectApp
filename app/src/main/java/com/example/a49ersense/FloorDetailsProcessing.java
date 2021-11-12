@@ -278,9 +278,9 @@ public class FloorDetailsProcessing extends AsyncTask<String,Void,String> {
         if(task.equalsIgnoreCase("getFloorDetails")){
             Log.d("floorResponce", "" + s);
             if(serverResponse[0]!="0"){
-//                Intent intent = new Intent(context, FloorDetailsActivity.class);
-//                intent.putExtra("serverResponseforFloor",s);
-//                context.startActivity(intent);
+                Intent intent = new Intent(context, FloorDetailsActivity.class);
+                intent.putExtra("serverResponseforFloor",s);
+                context.startActivity(intent);
             }else {
                 Log.d("fetch database failed",serverResponse[0]);
             }
