@@ -44,12 +44,12 @@ public class BackgroundTask extends AsyncTask<String,Void,String> {
         editor = preferences.edit();
         editor.putString("flag","0");
         editor.commit();
-        String urlLogin = "http://127.0.0.1/49ersense/login.php";
-        String urlRegister ="http://127.0.0.149ersense/register.php";
-        String urlUpdate="http://192.27.0.0.1/49ersense/update_my_settings.php";
-        String urlRegisterAdmin="http://127.0.0.1/49ersense/admin/register.php";
-        String urlLoginAdmin="http://127.0.0.1/49ersense/admin/login.php";
-        String urlAdminUserDetails="http://127.0.0.1/49ersense/admin/user_details.php";
+        String urlLogin = "http://192.168.2.9/49ersense/login.php";
+        String urlRegister ="http://192.168.2.9/49ersense/register.php";
+        String urlUpdate="http://192.168.2.9/49ersense/update_my_settings.php";
+        String urlRegisterAdmin="http://192.168.2.9/49ersense/admin/register.php";
+        String urlLoginAdmin="http://192.168.2.9/49ersense/admin/login.php";
+        String urlAdminUserDetails="http://192,168.2.9/49ersense/admin/user_details.php";
         String task=params[0];
         Log.d(TAG,params[0]);
         flag1=task;

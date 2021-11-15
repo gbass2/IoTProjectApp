@@ -1,10 +1,15 @@
 package com.example.a49ersense;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.NotificationCompat;
+import androidx.core.app.NotificationManagerCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.SeekBar;
@@ -33,30 +38,50 @@ public class MyHouseActivity extends AppCompatActivity implements FloorAdapter.l
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_my_house);
+
+//        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.O){
+//            NotificationChannel channel = new NotificationChannel("Alarm Notification", "alarm", NotificationManager.IMPORTANCE_DEFAULT);
+//            NotificationManager manager = getSystemService(NotificationManager.class);
+//            manager.createNotificationChannel(channel);
+//        }
+
         Intent intent = getIntent();
         String s = intent.getStringExtra("serverResponse");
         String[] serverResponse = s.split("[,]");
         house.setHouseID(serverResponse[0]);
         house.setSecurityStatus(serverResponse[1]);
-        if(serverResponse[2].equalsIgnoreCase("1")){
+
+//        if(serverResponse[2].equalsIgnoreCase("1")){
+//            NotificationCompat.Builder builder = new NotificationCompat.Builder(MyHouseActivity.this, "Alarm Notification" );
+//            builder.setContentTitle("Alarm triggered");
+//            builder.setContentText("Alarm has been triggered");
+//            builder.setSmallIcon(R.drawable.ic_launcher_background);
+//            builder.setAutoCancel(true);
+//            NotificationManagerCompat managerCompat = NotificationManagerCompat.from(MyHouseActivity.this);
+//            managerCompat.notify(1, builder.build());
+//
+//
+//        }
+
+        if(serverResponse[3].equalsIgnoreCase("1")){
             house.setFrontLockStatus(true);
         }else{
             house.setFrontLockStatus(false);
         }
-        if(serverResponse[3].equalsIgnoreCase("1")){
+        if(serverResponse[4].equalsIgnoreCase("1")){
             house.setBackLockStatus(true);
         }else{
             house.setBackLockStatus(false);
         }
-        if(serverResponse[4].equalsIgnoreCase("1")){
+        if(serverResponse[5].equalsIgnoreCase("1")){
             house.setGarageLockStatus(true);
         }else{
             house.setGarageLockStatus(false);
         }
 
-        house.setFloors(serverResponse[5]);
-        house.setGarageDoors(serverResponse[6]);
-        int index = 7;
+        house.setFloors(serverResponse[6]);
+        house.setGarageDoors(serverResponse[7]);
+        int index = 8;
         for(int i=0;i<Integer.parseInt(house.getGarageDoors());i++){
             GarageDTO garage = new GarageDTO();
             garage.setGarageID(serverResponse[index]);

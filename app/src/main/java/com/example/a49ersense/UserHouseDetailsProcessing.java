@@ -43,10 +43,10 @@ public class UserHouseDetailsProcessing extends AsyncTask<String,Void,String> {
         editor = preferences.edit();
         editor.putString("flag","0");
         editor.commit();
-        String houseDetails="http://127.0.0.1/49ersense/home/housedetails.php";
-        String updateGarage="http://127.0.0.1/49ersense/home/updategarage.php";
-        String updateHouseStatus="http://127.0.0.1/49ersense/home/updatehousedetails.php";
-        String applianceDetails="http://127.0.0.1/49ersense/home/appliancedetails.php";
+        String houseDetails="http://192.168.2.9/49ersense/home/housedetails.php";
+        String updateGarage="http://192.168.2.9/49ersense/home/updategarage.php";
+        String updateHouseStatus="http://192.168.2.9/49ersense/home/updatehousesecurity.php";
+        String applianceDetails="http://192.168.2.9/49ersense/home/appliancedetails.php";
 
         try{
 
