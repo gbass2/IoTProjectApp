@@ -19,9 +19,7 @@ public class MainActivityUser extends AppCompatActivity
     Button house_details;
     Button weather_details;
     Button video_feed;
-    Button energy_details;
     Button my_settings;
-    Button manageAppliances;
     HouseDTO house = new HouseDTO();
 
     @SuppressLint("WrongThread")
@@ -45,9 +43,7 @@ public class MainActivityUser extends AppCompatActivity
         house_details   = findViewById(R.id.houseDetails);
         weather_details = findViewById(R.id.weatherDetails);
         video_feed      = findViewById(R.id.videoFeed);
-        energy_details  = findViewById(R.id.energyBreakDown);
         my_settings     = findViewById(R.id.mySettings);
-        manageAppliances = findViewById(R.id.appliances);
 
         setUpButtonListeners();
     }
@@ -71,12 +67,12 @@ public class MainActivityUser extends AppCompatActivity
                 startActivity(new Intent(MainActivityUser.this,MySettings.class));
             }
         });
-        energy_details.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(MainActivityUser.this,EnergyBreakdown.class));
-            }
-        });
+//        energy_details.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                startActivity(new Intent(MainActivityUser.this,EnergyBreakdown.class));
+//            }
+//        });
 
         weather_details.setOnClickListener(new View.OnClickListener()
         {
@@ -93,13 +89,13 @@ public class MainActivityUser extends AppCompatActivity
             }
         });
 
-        manageAppliances.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                UserHouseDetailsProcessing houseDetailsProcessing = new UserHouseDetailsProcessing(MainActivityUser.this);
-                houseDetailsProcessing.execute("getApplianceDetails",house.getUserID(),house.getHouseID());
-            }
-        });
+//        manageAppliances.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                UserHouseDetailsProcessing houseDetailsProcessing = new UserHouseDetailsProcessing(MainActivityUser.this);
+//                houseDetailsProcessing.execute("getApplianceDetails",house.getUserID(),house.getHouseID());
+//            }
+//        });
     }
 
 }

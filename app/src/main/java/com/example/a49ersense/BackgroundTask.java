@@ -44,63 +44,16 @@ public class BackgroundTask extends AsyncTask<String,Void,String> {
         editor = preferences.edit();
         editor.putString("flag","0");
         editor.commit();
-        String urlLogin = "http://192.168.2.10/49ersense/login.php";
-        String urlRegister ="http://192.168.2.10/49ersense/register.php";
-        String urlUpdate="http://192.168.2.10/49ersense/update_my_settings.php";
-        String urlRegisterAdmin="http://192.168.2.10/49ersense/admin/register.php";
-        String urlLoginAdmin="http://192.168.2.10/49ersense/admin/login.php";
-        String urlAdminUserDetails="http://192.168.2.10/49ersense/admin/user_details.php";
-        String urlAdminEnerngyBreakdown="http://192.168.2.10/49ersense/energyBreakdown.php";
+        String urlLogin = "http://127.0.0.1/49ersense/login.php";
+        String urlRegister ="http://127.0.0.149ersense/register.php";
+        String urlUpdate="http://192.27.0.0.1/49ersense/update_my_settings.php";
+        String urlRegisterAdmin="http://127.0.0.1/49ersense/admin/register.php";
+        String urlLoginAdmin="http://127.0.0.1/49ersense/admin/login.php";
+        String urlAdminUserDetails="http://127.0.0.1/49ersense/admin/user_details.php";
         String task=params[0];
         Log.d(TAG,params[0]);
         flag1=task;
-        if(task.equals("adminenergybreakdown")){
-            final String username = params[1];
 
-            try {
-               URL url = new URL(urlAdminEnerngyBreakdown);
-                HttpURLConnection httpURLConnection =(HttpURLConnection) url.openConnection();
-                httpURLConnection.setRequestMethod("POST");
-                httpURLConnection.setDoOutput(true);
-                httpURLConnection.setDoInput(true);
-                OutputStream outputStream= httpURLConnection.getOutputStream() ;
-                OutputStreamWriter outputStreamWriter= new OutputStreamWriter(outputStream, "UTF-8");
-                BufferedWriter bufferedWriter = new BufferedWriter(outputStreamWriter);
-                String myData=URLEncoder.encode("username","UTF-8")+"="+URLEncoder.encode(username,"UTF-8");
-                bufferedWriter.write(myData);
-                bufferedWriter.flush();
-                bufferedWriter.close();
-                outputStream.close();
-//                Get information from database
-                InputStream inputStream =httpURLConnection.getInputStream();
-                InputStreamReader inputStreamReader = new InputStreamReader(inputStream, "UTF-8");
-                BufferedReader bufferedReader= new BufferedReader(inputStreamReader);
-                String dataresponse ="";
-                StringBuilder result=new StringBuilder();
-                String inputLine;
-                while((inputLine=bufferedReader.readLine())!=null){
-                    dataresponse+=inputLine;
-
-                }
-
-                bufferedReader.close();
-                inputStream.close();
-                httpURLConnection.disconnect();
-                editor.putString("flag","adminenergybreakdown");
-                editor.commit();
-                return (dataresponse);
-
-            } catch (MalformedURLException e) {
-                e.printStackTrace();
-            } catch (UnsupportedEncodingException e) {
-                e.printStackTrace();
-            } catch (ProtocolException e) {
-                e.printStackTrace();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-
-        }
         if(task.equals("adminuserdetails")){
             try{
                 URL url = new URL(urlAdminUserDetails);

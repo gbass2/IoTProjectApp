@@ -54,6 +54,7 @@ public class NetworkUtils {
     public static String getResponseFromHttpUrl(URL url) throws IOException{
         HttpURLConnection httpURLConnection =(HttpURLConnection) url.openConnection();
         try {
+
             InputStream in= httpURLConnection.getInputStream();
             Scanner scanner = new Scanner(in);
             scanner.useDelimiter("\\A");

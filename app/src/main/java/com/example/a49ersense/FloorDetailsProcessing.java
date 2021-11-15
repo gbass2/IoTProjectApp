@@ -44,11 +44,11 @@ public class FloorDetailsProcessing extends AsyncTask<String,Void,String> {
         editor = preferences.edit();
         editor.putString("flag","0");
         editor.commit();
-        String floorDetails="http://192.168.2.10/49ersense/home/floordetails.php";
-        String updateThermoControl="http://192.168.2.10/49ersense/home/updatecontroltemp.php";
-        String updateFan="http://192.168.2.10/49ersense/home/updatefan.php";
-        String updateMode="http://192.168.2.10/49ersense/home/updatemode.php";
-        String updateLight="http://192.168.2.10/49ersense/home/updatelights.php";
+        String floorDetails="http://127.0.0.1/49ersense/home/floordetails.php";
+        String updateThermoControl="http://127.0.0.1/49ersense/home/updatecontroltemp.php";
+        String updateFan="http://127.0.0.1/49ersense/home/updatefan.php";
+        String updateMode="http://127.0.0.1/49ersense/home/updatemode.php";
+        String updateLight="http://127.0.0.1/49ersense/home/updatelights.php";
 
         try{
             if(task.equalsIgnoreCase("getFloorDetails")){
