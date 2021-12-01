@@ -44,19 +44,18 @@ public class BackgroundTask extends AsyncTask<String,Void,String> {
         editor = preferences.edit();
         editor.putString("flag","0");
         editor.commit();
-        String urlLogin = "http://192.168.2.10/49ersense/login.php";
-        String urlRegister ="http://192.168.2.10/49ersense/register.php";
-        String urlUpdate="http://192.168.2.10/49ersense/update_my_settings.php";
-        String urlRegisterAdmin="http://192.168.2.10/49ersense/admin/register.php";
-        String urlLoginAdmin="http://192.168.2.10/49ersense/admin/login.php";
-        String urlAdminUserDetails="http://192.168.2.10/49ersense/admin/user_details.php";
-        String urlAdminEnerngyBreakdown="http://192.168.2.10/49ersense/energyBreakdown.php";
+        String urlLogin = "http://10.211.55.3/49ersense/login.php";
+        String urlRegister ="http://10.211.55.3/49ersense/register.php";
+        String urlUpdate="http://10.211.55.3/49ersense/update_my_settings.php";
+        String urlRegisterAdmin="http://10.211.55.3/49ersense/admin/register.php";
+        String urlLoginAdmin="http://10.211.55.3/49ersense/admin/login.php";
+        String urlAdminUserDetails="http://10.211.55.3/49ersense/admin/user_details.php";
+        String urlAdminEnerngyBreakdown="http://10.211.55.3/49ersense/energyBreakdown.php";
         String task=params[0];
         Log.d(TAG,params[0]);
         flag1=task;
         if(task.equals("adminenergybreakdown")){
             final String username = params[1];
-
             try {
                URL url = new URL(urlAdminEnerngyBreakdown);
                 HttpURLConnection httpURLConnection =(HttpURLConnection) url.openConnection();
@@ -178,6 +177,7 @@ public class BackgroundTask extends AsyncTask<String,Void,String> {
             final String phone1=params[5];
             final String address1=params[6];
             final String userid1=params[7];
+            Log.d(TAG, "username : " +username1);
 
             try {
                 URL url= new URL(urlRegister);
@@ -381,6 +381,7 @@ public class BackgroundTask extends AsyncTask<String,Void,String> {
             context.startActivity(intent);
         }
         if(flag.equals("registeruser")) {
+            Log.d(TAG, "registeruser: " + s);
             Toast.makeText(context,"Registered Successfully",Toast.LENGTH_LONG).show();
             Intent intent = new Intent(context, Login.class);
             context.startActivity(intent);
@@ -402,7 +403,7 @@ public class BackgroundTask extends AsyncTask<String,Void,String> {
 
             String[] serverResponse = s.split("[,]");
 
-//            Log.d(TAG,"test:"+serverResponse[3]);
+            Log.d(TAG,"test:"+s);
             test = serverResponse[0];
             userid = serverResponse[1];
             if (test.equals("true")) {

@@ -22,6 +22,7 @@ import java.net.MalformedURLException;
 import java.net.ProtocolException;
 import java.net.URL;
 import java.net.URLEncoder;
+import org.json.JSONObject;
 
 public class UserHouseDetailsProcessing extends AsyncTask<String,Void,String> {
 
@@ -43,10 +44,10 @@ public class UserHouseDetailsProcessing extends AsyncTask<String,Void,String> {
         editor = preferences.edit();
         editor.putString("flag","0");
         editor.commit();
-        String houseDetails="http://192.168.2.10/49ersense/home/housedetails.php";
-        String updateGarage="http://192.168.2.10/49ersense/home/updategarage.php";
-        String updateHouseStatus="http://192.168.2.10/49ersense/home/updatehousedetails.php";
-        String applianceDetails="http://192.168.2.10/49ersense/home/appliancedetails.php";
+        String houseDetails="http://10.211.55.3/49ersense/home/housedetails.php";
+        String updateGarage="http://10.211.55.3/49ersense/home/updategarage.php";
+        String updateHouseStatus="http://10.211.55.3/49ersense/home/updatehousedetails.php";
+        String applianceDetails="http://10.211.55.3/49ersense/home/appliancedetails.php";
 
         try{
 
@@ -85,75 +86,83 @@ public class UserHouseDetailsProcessing extends AsyncTask<String,Void,String> {
                 return (dataresponse);
             }
             if(task.equalsIgnoreCase("updateGarage")){
-                Log.d("garageStatus", "garageStatus: " + userID);
-                Log.d("garageID", "garageID: " + garageID);
-                Log.d("houseID", "ID: " + houseID);
-                URL url= new URL(updateGarage);
-                HttpURLConnection httpURLConnection =(HttpURLConnection) url.openConnection();
-                httpURLConnection.setRequestMethod("POST");
-                httpURLConnection.setDoOutput(true);
-                httpURLConnection.setDoInput(true);
-                OutputStream outputStream= httpURLConnection.getOutputStream() ;
-                OutputStreamWriter outputStreamWriter= new OutputStreamWriter(outputStream, "UTF-8");
-                BufferedWriter bufferedWriter = new BufferedWriter(outputStreamWriter);
-                String myData= URLEncoder.encode("houseID","UTF-8")+"="+URLEncoder.encode(houseID,"UTF-8")+"&"
-                        +URLEncoder.encode("garageStatus","UTF-8")+"="+URLEncoder.encode(userID,"UTF-8")+"&"
-                        +URLEncoder.encode("garageID","UTF-8")+"="+URLEncoder.encode(garageID,"UTF-8");
-                bufferedWriter.write(myData);
-                bufferedWriter.flush();
-                bufferedWriter.close();
-                outputStream.close();
+//                URL url= new URL(updateGarage);
+//                HttpURLConnection httpURLConnection =(HttpURLConnection) url.openConnection();
+//                httpURLConnection.setRequestMethod("POST");
+//                httpURLConnection.setDoOutput(true);
+//                httpURLConnection.setDoInput(true);
+//                OutputStream outputStream= httpURLConnection.getOutputStream() ;
+//                OutputStreamWriter outputStreamWriter= new OutputStreamWriter(outputStream, "UTF-8");
+//                BufferedWriter bufferedWriter = new BufferedWriter(outputStreamWriter);
+//                String myData= URLEncoder.encode("houseID","UTF-8")+"="+URLEncoder.encode(houseID,"UTF-8")+"&"
+//                        +URLEncoder.encode("garageStatus","UTF-8")+"="+URLEncoder.encode(userID,"UTF-8")+"&"
+//                        +URLEncoder.encode("garageID","UTF-8")+"="+URLEncoder.encode(garageID,"UTF-8");
+//                bufferedWriter.write(myData);
+//                bufferedWriter.flush();
+//                bufferedWriter.close();
+//                outputStream.close();
+//
+//                //get info from database
+//                InputStream inputStream =httpURLConnection.getInputStream();
+//                InputStreamReader inputStreamReader = new InputStreamReader(inputStream, "UTF-8");
+//                BufferedReader bufferedReader= new BufferedReader(inputStreamReader);
+//                String dataresponse ="";
+//                String inputLine;
+//
+//
+//
+//                while((inputLine=bufferedReader.readLine())!=null){
+//                    dataresponse+=inputLine;
+//
+//                }
+//                bufferedReader.close();
+//                inputStream.close();
+//                httpURLConnection.disconnect();
+//                return (dataresponse);
 
-                //get info from database
-                InputStream inputStream =httpURLConnection.getInputStream();
-                InputStreamReader inputStreamReader = new InputStreamReader(inputStream, "UTF-8");
-                BufferedReader bufferedReader= new BufferedReader(inputStreamReader);
-                String dataresponse ="";
-                String inputLine;
-
-
-
-                while((inputLine=bufferedReader.readLine())!=null){
-                    dataresponse+=inputLine;
-
-                }
-                bufferedReader.close();
-                inputStream.close();
-                httpURLConnection.disconnect();
-                return (dataresponse);
+                ClientSocket socket = new ClientSocket();
+                socket.startConnection("10.211.55.3",10003);
+                String data = task + "," + houseID + "," + userID + "," + garageID;
+                socket.sendMessage(data);
+                socket.stopConnection();
             }if(task.equalsIgnoreCase("updateHouse")){
-                URL url= new URL(updateHouseStatus);
-                HttpURLConnection httpURLConnection =(HttpURLConnection) url.openConnection();
-                httpURLConnection.setRequestMethod("POST");
-                httpURLConnection.setDoOutput(true);
-                httpURLConnection.setDoInput(true);
-                OutputStream outputStream= httpURLConnection.getOutputStream() ;
-                OutputStreamWriter outputStreamWriter= new OutputStreamWriter(outputStream, "UTF-8");
-                BufferedWriter bufferedWriter = new BufferedWriter(outputStreamWriter);
-                String myData= URLEncoder.encode("security","UTF-8")+"="+URLEncoder.encode(userID,"UTF-8")+"&"
-                        +URLEncoder.encode("houseID","UTF-8")+"="+URLEncoder.encode(houseID,"UTF-8");
-                bufferedWriter.write(myData);
-                bufferedWriter.flush();
-                bufferedWriter.close();
-                outputStream.close();
-
-                //get info from database
-                InputStream inputStream =httpURLConnection.getInputStream();
-                InputStreamReader inputStreamReader = new InputStreamReader(inputStream, "UTF-8");
-                BufferedReader bufferedReader= new BufferedReader(inputStreamReader);
-                String dataresponse ="";
-                String inputLine;
-
-
-
-                while((inputLine=bufferedReader.readLine())!=null){
-                    dataresponse+=inputLine;
-
-                }
-                bufferedReader.close();
-                inputStream.close();
-                httpURLConnection.disconnect();
-                return (dataresponse);
+//                URL url= new URL(updateHouseStatus);
+//                HttpURLConnection httpURLConnection =(HttpURLConnection) url.openConnection();
+//                httpURLConnection.setRequestMethod("POST");
+//                httpURLConnection.setDoOutput(true);
+//                httpURLConnection.setDoInput(true);
+//                OutputStream outputStream= httpURLConnection.getOutputStream() ;
+//                OutputStreamWriter outputStreamWriter= new OutputStreamWriter(outputStream, "UTF-8");
+//                BufferedWriter bufferedWriter = new BufferedWriter(outputStreamWriter);
+//                String myData= URLEncoder.encode("security","UTF-8")+"="+URLEncoder.encode(userID,"UTF-8")+"&"
+//                        +URLEncoder.encode("houseID","UTF-8")+"="+URLEncoder.encode(houseID,"UTF-8");
+//                bufferedWriter.write(myData);
+//                bufferedWriter.flush();
+//                bufferedWriter.close();
+//                outputStream.close();
+//
+//                //get info from database
+//                InputStream inputStream =httpURLConnection.getInputStream();
+//                InputStreamReader inputStreamReader = new InputStreamReader(inputStream, "UTF-8");
+//                BufferedReader bufferedReader= new BufferedReader(inputStreamReader);
+//                String dataresponse ="";
+//                String inputLine;
+//
+//
+//
+//                while((inputLine=bufferedReader.readLine())!=null){
+//                    dataresponse+=inputLine;
+//
+//                }
+//                bufferedReader.close();
+//                inputStream.close();
+//                httpURLConnection.disconnect();
+//                return (dataresponse);
+                ClientSocket socket = new ClientSocket();
+                socket.startConnection("10.211.55.3",10003);
+                String data = task + "," + houseID + "," + userID;
+                socket.sendMessage(data);
+                socket.stopConnection();
             }
             if(task.equalsIgnoreCase("getApplianceDetails")){
                 URL url= new URL(applianceDetails);
@@ -228,25 +237,25 @@ public class UserHouseDetailsProcessing extends AsyncTask<String,Void,String> {
             }
         }
         if(tsk.equalsIgnoreCase("updateGarage")){
-            Log.d("garage responce", serverResponse[0]);
-            if(serverResponse[0]=="0"){
-                Log.d("update garage failed",serverResponse[0]);
-            }
+//            Log.d("garage responce", serverResponse[0]);
+//            if(serverResponse[0]=="0"){
+//                Log.d("update garage failed",serverResponse[0]);
+//            }
         }
         if(tsk.equalsIgnoreCase("updateHouse")){
-            Log.d("updateHouse", "return: " + serverResponse[0]);
-            if(serverResponse[0]=="0"){
-                Log.d("update status failed",serverResponse[0]);
-            }
+//            Log.d("updateHouse", "return: " + serverResponse[0]);
+//            if(serverResponse[0]=="0"){
+//                Log.d("update status failed",serverResponse[0]);
+//            }
         }
         if(tsk.equalsIgnoreCase("getApplianceDetails")){
-            if(serverResponse[0]!="0"){
-                Intent intent = new Intent(context, ManageAppliancesActivity.class);
-                intent.putExtra("serverResponse",s);
-                context.startActivity(intent);
-            }else {
-                Log.d("fetch appliances failed",serverResponse[0]);
-            }
+//            if(serverResponse[0]!="0"){
+//                Intent intent = new Intent(context, ManageAppliancesActivity.class);
+//                intent.putExtra("serverResponse",s);
+//                context.startActivity(intent);
+//            }else {
+//                Log.d("fetch appliances failed",serverResponse[0]);
+//            }
         }
 
     }

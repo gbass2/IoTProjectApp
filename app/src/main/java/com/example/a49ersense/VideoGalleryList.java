@@ -54,15 +54,6 @@ public class VideoGalleryList extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?>array, View view, int position, long id) {
                 String value = array.getItemAtPosition(position).toString();
-//                Intent intent = new Intent(Intent.ACTION_VIEW);
-//                intent.setDataAndType(Uri.parse(value), "video/*");
-//                startActivity(Intent.createChooser(intent, "Complete action using"));
-                        
-
-//                preferences=context.getSharedPreferences("MYPREFS",Context.MODE_PRIVATE);
-//                editor = preferences.edit();
-//                editor.putString("videoname",value);
-//                editor.commit();
                 Intent intent = new Intent(VideoGalleryList.this, GalleryVideoView.class);
                 intent.putExtra("url",value);
                 startActivity(intent);
@@ -73,7 +64,7 @@ public class VideoGalleryList extends AppCompatActivity {
     public List GetfromServer(){
 
         try {
-            url1=new URL("http://192.168.2.10/49ersense/videos/");
+            url1=new URL("http://10.211.55.3/49ersense/videos/");
             ApacheURLLister lister = new ApacheURLLister();
             serverDir.addAll(lister.listAll(url1));
 
